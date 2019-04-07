@@ -1,0 +1,77 @@
+//import java.io.IOException;
+
+/**
+ * Created by 1 on 03/07/2017.
+ */
+public class Alien extends Block {
+    private long time;
+    private double v = 1;
+    private double newV;
+
+    /**
+     * constructor - Builds block by rectangle and by image.
+     * @param rect - The rectangle that builds the block.
+     * @param image - The image of the block.
+     * @param counterHit - The number of hits  of the ball in the block.
+     */
+    public Alien(Rectangle rect, java.awt.Image image, int counterHit) {
+        super(rect, image, counterHit);
+        this.time = System.currentTimeMillis();
+//        try {
+//            image = ImageIO.read(ClassLoader.getSystemResourceAsStream("alien.png"));
+//        } catch (java.io.IOException e) {
+//            e.printStackTrace();
+//        }
+       // this.hitListeners = new java.util.ArrayList<HitListener>();
+    }
+
+    /**
+     * draw the sprite to the screen.
+     * @param d -drawsurface.
+     */
+    public void drawOn(biuoop.DrawSurface d) {
+            d.drawImage((int) this.getRectangle().getUpperLeft().getX(),
+                    (int) this.getRectangle().getUpperLeft().getY(), this.getImage());
+    }
+    @Override
+    public void timePassed(double dt) {
+//        if (System.currentTimeMillis() - this.time >= 500) {
+//            //this.stop = true;
+//            double x = this.rectangle.getUpperLeft().getX() + this.rectangle.getWidth() / 2;
+//            double y = this.rectangle.getUpperLeft().getY() + this.rectangle.getWidth() / 2 - 55;
+//            Ball ball = new Ball((int) x, (int) y, 5, java.awt.Color.red);
+//            Velocity v = new Velocity(0, 500);
+//            ball.setVelocity(v);
+//            ball.addToGame(this.game);
+//            ball.setGameEnvironment(this.environment);
+//        }
+//        this.time = System.currentTimeMillis();
+    }
+
+    /**
+     *
+     * @param x - gets a x.
+     * @param y - gets a y.
+     */
+    public void reset(double x, double y) {
+        super.reset(x, y);
+    }
+
+    /**
+     * shot.
+     * @param environment - gets a environment.
+     * @param game - gets a game.
+     */
+    public void shot(GameEnvironment environment, GameLevel game) {
+        double x = this.getRectangle().getUpperLeft().getX() + this.getRectangle().getWidth() / 2;
+        double y = this.getRectangle().getUpperLeft().getY() + this.getRectangle().getHeight() + 10;
+        Ball ball = new Ball((int) x, (int) y, 2, java.awt.Color.red);
+        Velocity v1 = new Velocity(0, 500);
+        ball.setVelocity(v1);
+        ball.addToGame(game);
+        ball.setGameEnvironment(environment);
+    }
+}
+
+
+
